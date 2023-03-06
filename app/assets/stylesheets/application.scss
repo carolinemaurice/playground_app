@@ -10,3 +10,27 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+h1 {
+  color: #0A196A;
+}
+
+h2 {
+  color: #102387;
+}
+
+h3 {
+  color: #FFA039;
+}
+
+p {
+  color: #102387;
+}
+
+a {
+  color: #102387;
+}
+
+a:hover {
+  color: #FF8500;
+}
