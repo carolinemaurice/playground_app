@@ -9,5 +9,5 @@ class Session < ApplicationRecord
   has_many :bookings
   has_one :chatroom
 
-  validates :date, :duration, presence: true
+  validates :date, :duration, :minimum_players, presence: true
 end
