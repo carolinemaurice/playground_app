@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 my-3">
+        <%= form_with url: playgrounds_path, method: :get, class: "d-flex gap-2" do %>
+        <div class= col-6>
+          <%= text_field_tag :address,
+          params[:address],
+          class: "search_bar form-control",
+          placeholder: "Address"
+          %>
+        </div>
+        <div class= col-3>
+          <%= text_field_tag :date,
+          params[:date],
+          class: "search_bar form-control",
+          placeholder: "Date"
+          %>
+        </div>
+        <div class= col-3>
+         <%= submit_tag "Search", class: "button-primary " %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
