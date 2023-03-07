@@ -20,13 +20,13 @@ puts "Create users..."
   user = User.create!(
     first_name: firstname,
     last_name: lastname,
-    email: "#{first_name.parameterize.underscore}.#{last_name.parameterize.underscore}@test.com",
+    email: "#{firstname.parameterize.underscore}.#{lastname.parameterize.underscore}@test.com",
     password: "azerty",
-    username: "#{first_name.parameterize.underscore}_#{last_name.parameterize.underscore}",
+    username: "#{firstname.parameterize.underscore}_#{lastname.parameterize.underscore}",
     phone_number: phonenumber
   )
   file = URI.open(Faker::Avatar.image)
-  user.photo.attach(io: file, filename: "#{firstname}.png", content_type: "photo.png")
+  user.avatar.attach(io: file, filename: "#{firstname}.png", content_type: "photo.png")
   puts "#{firstname} #{lastname} created"
 end
 
@@ -111,7 +111,7 @@ grounds.each do |ground|
   photos_number = (1..4).to_a.sample
   photos_number.times do
     file = URI.open(photos.sample)
-    user.photo.attach(io: file, filename: "#{playground.name}.jpg", content_type: "photo.jpg")
+    playground.pictures.attach(io: file, filename: "#{playground.name}.jpg", content_type: "photo.jpg")
   end
   puts "#{playground.name} created"
 end
@@ -139,7 +139,7 @@ comments = [
   ].sample
   gametype = GAME_TYPE.sample
 
-  case game_type
+  case gametype
   when '5v5'
     minimumplayers = 10
   when '4v4'
@@ -150,7 +150,7 @@ comments = [
     minimumplayers = (4..10).to_a.sample
   end
 
-  session = Session.create!(
+  session = Session.new(
     date: date_session,
     duration: durations.sample,
     game_type: gametype,
@@ -159,7 +159,8 @@ comments = [
   session.creator = creator
   session.playground = playground
   session.comment = comments.sample if [true, false, false].sample
-  session.chatroom = Chatroom.create!
+  session.save!
+  Chatroom.create!(session_id: session.id)
 end
 
 puts "Create bookings..."
@@ -167,9 +168,10 @@ puts "Create bookings..."
 200.times do
   player = User.all.sample
   session = Session.all.sample
-  booking.create!
+  booking = Booking.new
   booking.session = session
-  booking.players << player
+  booking.user = player
+  booking.save!
 end
 
 puts "Create reviews..."
@@ -189,10 +191,10 @@ playground_comments = [
 40.times do
   user = User.all.sample
   playground = Playground.all.sample
-  review.create!(comment: playground_comments.sample)
+  review = Review.new(comment: playground_comments.sample)
   review.user = user
   review.playground = playground
+  review.save!
 end
-
 
 puts "Import in database finished"
