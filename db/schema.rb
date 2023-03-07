@@ -108,6 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_145413) do
     t.bigint "playground_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "Pending"
     t.index ["playground_id"], name: "index_sessions_on_playground_id"
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end

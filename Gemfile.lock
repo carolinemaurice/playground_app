@@ -130,7 +130,7 @@ GEM
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.6.2)
+    irb (1.6.3)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -165,9 +165,13 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.8)
+<<<<<<< HEAD
     nokogiri (1.14.2-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
+=======
+    nokogiri (1.14.2-x86_64-darwin)
+>>>>>>> sessions begin 2
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.6)

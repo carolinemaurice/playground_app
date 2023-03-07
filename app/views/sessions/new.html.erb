@@ -1,9 +1,9 @@
 <h1>Create a session</h1>
 <%= simple_form_for [@playground, @session] do |f| %>
-  <%= f.input :game_type %>
+  <%= f.input :game_type, collection: Session.class_variable_get(:@@GAME_TYPE) %>
   <%= f.input :date %>
   <%= f.input :duration %>
-  <%= f.input :comment %>
   <%= f.input :minimum_players %>
-  <%= f.submit "confirm", class: "" %>
+  <%= f.input :comment %>
+  <%= f.submit "confirm", class: "button-primary" %>
 <% end %>

@@ -1,4 +1,6 @@
 class Session < ApplicationRecord
+  @@GAME_TYPE = ['3v3', '5v5', '1v1 Tournament', '4v4', 'Shooting Session']
+  STATUS = ['Pending', 'Validated', 'Finished', 'In progress']
   belongs_to :creator, class_name: "User", foreign_key: "user_id"
   has_many :players,
            through: :bookings,
@@ -11,5 +13,6 @@ class Session < ApplicationRecord
 
 
   validates :date, :duration, :minimum_players, presence: true
-  validates :game_type, inclusion: { in: ['3v3', '5v5', '1v1 Tournament', '4v4', 'Shooting Session'] }
+  validates :game_type, inclusion: { in: @@GAME_TYPE }
+  validates :status, inclusion: { in: STATUS }
 end

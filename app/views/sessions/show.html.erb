@@ -1,2 +1,25 @@
-<h1>Sessions#show</h1>
-<p>Find me in app/views/sessions/show.html.erb</p>
+<h1>Sessions in progress...</h1>
+<% if @playground.sessions_in_progress %>
+  <% @playground.sessions_in_progress do |session| %>
+    <li class="list-group-item"><%= session.game_type %></li>
+    <li class="list-group-item"><%= session.date %></li>
+    <li class="list-group-item"><%= session.duration %></li>
+    <li class="list-group-item"><%= session.minimum_players %></li>
+    <li class="list-group-item"><%= session.comment %></li>
+    <% end %>
+  <% else %>
+  <p>Nobody is playing right now </p>
+  <%= link_to "Create a session", new_playground_session_path(@playground) %>
+  <% end %>
+
+<h1>Upcoming Sessions</h1>
+<ul class="list-group">
+  <% @playground.upcoming_sessions.each do |session| %>
+    <li class="list-group-item"><%= session.game_type %></li>
+    <li class="list-group-item"><%= session.date %></li>
+    <li class="list-group-item"><%= session.duration %></li>
+    <li class="list-group-item"><%= session.minimum_players %></li>
+    <li class="list-group-item"><%= session.comment %></li>
+  <% end %>
+</ul>
+<%= link_to "Return to playgrounds", playgrounds_path %>
