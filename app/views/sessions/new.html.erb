@@ -1,2 +1,9 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1>Create a session</h1>
+<%= simple_form_for [@playground, @session] do |f| %>
+  <%= f.input :game_type %>
+  <%= f.input :date %>
+  <%= f.input :duration %>
+  <%= f.input :comment %>
+  <%= f.input :minimum_players %>
+  <%= f.submit "confirm", class: "" %>
+<% end %>
