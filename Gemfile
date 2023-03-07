@@ -57,6 +57,10 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "dotenv-rails"
 
+# search_bar
+gem "pg_search"
+
+
 end
 
 group :development do
