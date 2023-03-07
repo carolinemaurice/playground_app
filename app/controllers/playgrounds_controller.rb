@@ -2,7 +2,7 @@ class PlaygroundsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    if params[:address].present? || params[:date].present?
+    if params[:address].present?
       @playgrounds = Playground.search_by_address_and_date(" #{params[:address]} #{params[:date]}")
     else
       @playgrounds = Playground.all
