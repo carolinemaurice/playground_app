@@ -6,8 +6,8 @@ class Session < ApplicationRecord
            foreign_key: "user_id"
 
   belongs_to :playground
-  has_many :bookings
-  has_one :chatroom
+  has_many :bookings, dependent: :destroy
+  has_one :chatroom, dependent: :destroy
 
   validates :date, :duration, :minimum_players, presence: true
 end
