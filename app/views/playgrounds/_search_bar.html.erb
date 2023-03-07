@@ -1,12 +1,13 @@
-<div class="container">
+<div class="ps-0 pe-3">
   <div class="row d-flex justify-content-center">
     <div class="col-12 my-3">
-        <%= form_with url: playgrounds_path, method: :get, class: "d-flex gap-2" do %>
+        <%= form_with url: playgrounds_path, method: :get, class: "d-flex gap-2", data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}  do %>
         <div class= col-6>
           <%= text_field_tag :address,
           params[:address],
           class: "search_bar form-control",
-          placeholder: "Address"
+          placeholder: "Address",
+          data: { address_autocomplete_target: "address" }
           %>
         </div>
         <div class= col-3>

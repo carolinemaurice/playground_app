@@ -60,6 +60,9 @@ group :development, :test do
 # search_bar
 gem "pg_search"
 
+# geo-coder
+gem "geocoder"
+
 
 end
 
