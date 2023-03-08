@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 // Connects to data-controller="address-autocomplete"
 export default class extends Controller {
@@ -8,22 +7,15 @@ export default class extends Controller {
   static targets = ["address"]
 
   connect() {
-    this.geocoder = new MapboxGeocoder({
-      accessToken: this.apiKeyValue,
-      types: "address"
-    })
-
-    this.geocoder.on("result", event => this.#setInputValue(event))
-    this.geocoder.on("clear", () => this.#clearInputValue())
+    console.log(this.apiKeyValue)
+    this.baseUrl = `https://api.geoapify.com/v1/geocode/autocomplete?format=json&apiKey=${this.apiKeyValue}`
   }
 
-  disconnect() {
-    this.geocoder.onRemove()
-  }
-
-
-  #setInputValue(event) {
-    this.addressTarget.value = event.result["place_name"]
+  update(event) {
+    // if (this.addressTarget.value.length >= 5) {
+    //   const url = `${this.baseUrl}&text=${this.addressTarget.value}`
+    //   fetch(url).then(response => response.json()).then(data => console.log(data.results))
+    // }
   }
 
   #clearInputValue() {
