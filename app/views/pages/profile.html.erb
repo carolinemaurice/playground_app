@@ -3,19 +3,19 @@
     <h2 class="mb-3">Profile</h2>
     <div class="d-flex flex-column align-items-center">
       <% if current_user.avatar.key %>
-        <%= cl_image_tag current_user.avatar.key, height: 200, width: 200, crop: :fill, radius: :max  %>
+        <%= cl_image_tag current_user.avatar.key, class:"avatar-profile" %>
       <% else %>
-        <%= image_tag "default_avatar.jpg", height: 200, width: 200, crop: :fill, radius: :max %>
+        <%= image_tag "default_avatar.jpg", class:"avatar-profile" %>
       <% end %>
       <p class="mt-3"><%= current_user.username %></p>
     </div>
     <div class="col-10 my-3">
       <div class="d-flex justify-content-between">
-        <div class="d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-start">
           <h3>First name</h3>
           <p><%= current_user.first_name %></p>
         </div>
-        <div class="col-6 d-flex flex-column align-items-center">
+        <div class="col-6 d-flex flex-column align-items-start">
           <h3>Last name</h3>
           <p><%= current_user.last_name %></p>
         </div>
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="col-6 offset-6">
-      <%= link_to "Edit my profile", edit_user_registration_path, class: "button-primary" %>
+      <%= link_to "Modify my profile", edit_user_registration_path, class: "button-primary" %>
     </div>
   </div>
 </div>
