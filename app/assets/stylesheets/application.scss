@@ -13,18 +13,25 @@
 
 h1 {
   color: #0A196A;
+  font-weight: 400;
+  font-family: $headers-font;
 }
 
 h2 {
   color: #102387;
+  font-weight: 400;
+  font-family: $body-font;
 }
 
 h3 {
   color: #FFA039;
+  font-weight: 500;
+  font-family: $body-font;
 }
 
 p {
   color: #102387;
+  font-weight: 300;
 }
 
 a {
