@@ -84,6 +84,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_145413) do
     t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "reviews", force: :cascade do |t|
