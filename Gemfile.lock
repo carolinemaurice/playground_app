@@ -168,6 +168,8 @@ GEM
 <<<<<<< HEAD
     nokogiri (1.14.2-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.14.2-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
 =======
     nokogiri (1.14.2-x86_64-darwin)
@@ -279,6 +281,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-darwin-17
   x86_64-linux
 
 DEPENDENCIES
