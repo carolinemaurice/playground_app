@@ -2,13 +2,18 @@
   <div class="row d-flex justify-content-center">
     <div class="col-12 my-3">
         <%= form_with url: playgrounds_path, method: :get, class: "d-flex gap-2", data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["GEOPIFY_API_KEY"]}  do %>
-        <div class= col-6>
+        <div class= col-6 style='height: 38px;'>
           <%= text_field_tag :address,
           params[:address],
           class: "search_bar form-control",
           placeholder: "Address",
           data: { address_autocomplete_target: "address", action: 'keyup->address-autocomplete#update' }
           %>
+          <div class='autocomplete' data-address-autocomplete-target="autocomplete" >
+            <div class='px-2'><p>55 rue Louis Plana, 31500 Toulouse, France</p></div>
+            <div class='px-2'><p>5 rue du docteur Emile Roux, 31300 Toulouse, France</p></div>
+            <div class='px-2'><p>55 rue de la colombette, 31000 Toulouse, France</p></div>
+          </div>
         </div>
         <div class= col-3>
           <%= text_field_tag :date,
