@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: "pages#home"
   get "/profile", to: "pages#profile", as: :profile_path
   get "/mysessions", to: "pages#mysessions", as: :mysessions_path
@@ -14,4 +13,8 @@ Rails.application.routes.draw do
     end
   end
   resources :bookings, only: :destroy
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 end
