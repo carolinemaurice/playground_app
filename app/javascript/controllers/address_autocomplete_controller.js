@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = { apiKey: String }
 
-  static targets = ["address", "autocomplete"]
+  static targets = ["address", 'list']
 
   connect() {
     // console.log(this.apiKeyValue)
@@ -18,16 +18,22 @@ export default class extends Controller {
     }
   }
 
+  chooseAddress(event) {
+    this.addressTarget.value = event.currentTarget.innerText
+    this.listTarget.classList.add('d-none')
+  }
+
   #addAddressesToDiv(results) {
-    this.autocompleteTarget.innerHTML = ""
+    this.listTarget.innerHTML = ""
     if (results.length) {
-      this.autocompleteTarget.classList.remove('d-none')
+      this.listTarget.classList.remove('d-none')
       results.forEach((result) => {
-        const el = `<div><p>${result.formatted}</p></div>`
-        this.autocompleteTarget.insertAdjacentHTML('beforeend', el)
+        const el = `<div data-action='click->address-autocomplete#chooseAddress'>${result.formatted}</div>`
+        this.listTarget.insertAdjacentHTML('beforeend', el)
       })
     } else {
-      this.autocompleteTarget.classList.add('d-none')
+      this.listTarget.classList.add('d-none')
     }
   }
+
 }
