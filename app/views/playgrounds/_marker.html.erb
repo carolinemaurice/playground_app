@@ -1,6 +1,11 @@
 <%= image_tag "logo.jpg",
-height: 30,
-width: 30,
-alt: "Logo",
-class: "marker"
-%>
+              height: 30,
+              width: 30,
+              alt: "Logo",
+              class: "marker",
+
+              data: {
+                display_playground_session_target: 'markers',
+                action: "click->display-playground-session#displayCard",
+                display_playground_session_id_param: playground.id
+              } %>
