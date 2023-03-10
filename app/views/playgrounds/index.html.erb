@@ -1,9 +1,8 @@
 <h1>Playgrounds#index</h1>
-<div class="container">
+<div class="container" data-controller="display-playground-session">
   <div class="row d-flex justify-content-center">
     <div class="col-12 my-3">
      <%= render "playgrounds/search_bar"%>
-
       <div style="width: 100%; height: 600px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
@@ -11,5 +10,7 @@
         data-map-localisation-value="<%= @localisation %>">
       </div>
     </div>
+  </div>
+  <div data-display-playground-session-target="playground">
   </div>
 </div>
