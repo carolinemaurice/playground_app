@@ -1,6 +1,6 @@
 class Session < ApplicationRecord
   @@GAME_TYPE = ['3v3', '5v5', '1v1 Tournament', '4v4', 'Shooting Session']
-  STATUS = ['Pending', 'Validated', 'Finished', 'In progress']
+  STATUS = ['Incomming', 'Running', 'Finished']
   belongs_to :creator, class_name: "User", foreign_key: "user_id"
   has_many :players,
            through: :bookings,
