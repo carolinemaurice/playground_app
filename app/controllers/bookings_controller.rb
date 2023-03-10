@@ -5,9 +5,9 @@ class BookingsController < ApplicationController
     @booking.session = @session
     @booking.user = current_user
     if @booking.save
-      redirect_to "/mysessions", notice: "You joined the session!"
+      redirect_to mysessions_path, notice: "You joined the session!"
     else
-      render @session, notice: "You cannot joined the session!"
+      redirect_to new_user_session_path
     end
   end
 
@@ -23,9 +23,9 @@ class BookingsController < ApplicationController
     when (0...30)
       redirect_to "/mysessions", notice: "You cannot delete this booking./nThis session will start in less than 30 minutes."
     when (-@booking.session.duration..0)
-      redirect_to "/mysessions", notice: "You cannot delete this booking./nThis session is started."
+      redirect_to "/mysessions", notice: "You cannot delete this booking./nThis session is running."
     else
-      redirect_to "/mysessions", notice: "You cannot delete this booking./nThis session is finished."
+      redirect_to "/mysessions", notice: "You cannot delete this booking./nThis session is over."
     end
   end
 
