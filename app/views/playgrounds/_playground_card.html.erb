@@ -1,16 +1,35 @@
 <div>
-  <div>
-     <%= playground.name %></h1>
-     <%= %>
-  </div>
-  <div class="card-session">
+  <div class="card-playground">
     <div>
+     <%= cl_image_tag playground.pictures.first.key, crop: :fill, class: 'playground-picture'%>
+     <h2 class="mt-3"><%= playground.name%></h2>
     </div>
-    <div>
+    <div class="row">
+      <div class="col-6">
+        <p> <%= playground.description %></p>
+      </div>
+      <div class="col-6">
+        <%= link_to "Create a session",new_playground_session_path(playground),
+            class:"button-primary"%>
+      </div>
+    </div>
+    <% playground.sessions.each do |session| %>
+    <div class="card-session my-3">
       <div>
+       <h2>Session :<%= session.date.time.strftime("%k:%M") %>h - <%= (session.date.time + session.duration * 60).strftime("%k:%M") %>h </h2>
+       <p><%= session.game_type %></p>
+      </div>
+      <div>
+        <%= link_to "Join", playground_session_bookings_path(session.playground, session), data: {turbo_method: :post}, class: "button-primary" %>s
+        <% session.players.each do |player|%>
+          <%= cl_image_tag player.avatar.key, class: 'avatar-profile' %>
+          <% end %>
       </div>
       <div>
       </div>
     </div>
-  </div>
-</div>
+
+
+
+
+        <% end %>
