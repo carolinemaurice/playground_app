@@ -46,11 +46,11 @@ grounds = [
   { address: "9 All. de Guyenne, 31770 Colomiers", name: "Terrain de basket Vauchere" },
   { address: "31860 Labarthe-sur-Lèze", name: "Halle des Sports ASLB Basket" },
   { address: "rue de la plage, 31150 Fenouillet", name: "Centre Sportif De Fenouillet" },
-  { address: "Rue André Broquère, 31150 Fenouillet", name: "Stade Piquepeyre" },
+  { address: "Rue Piquepeyre, 31150 Fenouillet", name: "Stade Piquepeyre" },
   { address: "42 Av. Augustin Labouilhe, 31650 Saint-Orens-de-Gameville", name: "Basket Saint Orens" },
   { address: "31670 Labège", name: "Gymnase de Labège Village" },
   { address: "Av. de Bayonne,31240 L'Union", name: "Basketball court" },
-  { address: "Chem. de Belbèze, 31240 Saint-Jean", name: "Nord Est Toulousain Basket" },
+  { address: "Rue Picasso, 31240 Saint-Jean", name: "Nord Est Toulousain Basket" },
 ]
 
 descriptions = [
@@ -133,9 +133,9 @@ comments = [
   creator = User.all.sample
   playground = Playground.all.sample
   date_session = [
-    Faker::Date.backward(days: 10),
-    Faker::Date.forward(days: 15),
-    Faker::Date.forward(days: 15)
+    Faker::Time.between_dates(from: Date.today - 12, to: Date.today, period: :day),
+    Faker::Time.between_dates(from: Date.today, to: Date.today + 21, period: :day),
+    Faker::Time.between_dates(from: Date.today, to: Date.today + 21, period: :evening)
   ].sample
   gametype = GAME_TYPE.sample
 
