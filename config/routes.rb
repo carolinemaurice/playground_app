@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "pages#home"
-  get "/profile", to: "pages#profile", as: :profile_path
-  get "/mysessions", to: "pages#mysessions", as: :mysessions_path
+  get "/profile", to: "pages#profile", as: :profile
+  get "/mysessions", to: "pages#mysessions", as: :mysessions
   resources :playgrounds, only: :index do
     resources :sessions, only: %i[show new create] do
       resources :bookings, only: :create
