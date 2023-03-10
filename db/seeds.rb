@@ -133,9 +133,9 @@ comments = [
   creator = User.all.sample
   playground = Playground.all.sample
   date_session = [
-    Faker::Date.backward(days: 10),
-    Faker::Date.forward(days: 15),
-    Faker::Date.forward(days: 15)
+    Faker::Time.between_dates(from: Date.today - 12, to: Date.today, period: :day),
+    Faker::Time.between_dates(from: Date.today, to: Date.today + 21, period: :day),
+    Faker::Time.between_dates(from: Date.today, to: Date.today + 21, period: :evening)
   ].sample
   gametype = GAME_TYPE.sample
 
