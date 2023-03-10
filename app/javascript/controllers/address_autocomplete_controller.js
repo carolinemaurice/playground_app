@@ -4,17 +4,18 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = { apiKey: String }
 
-  static targets = ["address", 'list']
+  static targets = ["address", "date", 'list', 'form']
 
   connect() {
-    // console.log(this.apiKeyValue)
     this.baseUrl = `https://api.geoapify.com/v1/geocode/autocomplete?format=json&apiKey=${this.apiKeyValue}`
   }
 
   update(event) {
     if (this.addressTarget.value.length >= 5) {
       const url = `${this.baseUrl}&text=${this.addressTarget.value}`
-      fetch(url).then(response => response.json()).then(data => this.#addAddressesToDiv(data.results))
+      fetch(url)
+      .then(response => response.json())
+      .then(data => this.#addAddressesToDiv(data.results))
     }
   }
 
@@ -35,5 +36,4 @@ export default class extends Controller {
       this.listTarget.classList.add('d-none')
     }
   }
-
 }
