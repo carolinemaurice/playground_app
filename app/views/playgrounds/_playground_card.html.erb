@@ -19,11 +19,17 @@
        <h2>Session :<%= session.date.time.strftime("%k:%M") %>h - <%= (session.date.time + session.duration * 60).strftime("%k:%M") %>h </h2>
        <p><%= session.game_type %></p>
       </div>
-      <div>
-        <%= link_to "Join", playground_session_bookings_path(session.playground, session), data: {turbo_method: :post}, class: "button-primary" %>s
+      <div class="row d-flex justify-content-between">
+          <div class="col-8">
         <% session.players.each do |player|%>
-          <%= cl_image_tag player.avatar.key, class: 'avatar-profile' %>
+          <%= cl_image_tag player.avatar.key, class: 'avatar' %>
           <% end %>
+          </div>
+          <div class="col-4">
+            <%= link_to "Join", playground_session_bookings_path(session.playground, session),
+                       data: {turbo_method: :post}, class: "button-primary" %>
+          </div>
+
       </div>
       <div>
       </div>
