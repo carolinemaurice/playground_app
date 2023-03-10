@@ -1,26 +1,38 @@
-<div class="ps-0 pe-3">
+<div class="ps-0 pe-3 mb-4">
   <div class="row d-flex justify-content-center">
     <div class="col-12 my-3">
-        <%= form_with url: playgrounds_path, method: :get, class: "d-flex gap-2", data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["GEOPIFY_API_KEY"]}  do %>
-        <div class= col-6>
+      <%= form_with url: playgrounds_path,
+                    method: :get,
+                    class: "d-flex gap-2",
+                    data: {
+                      controller: "address-autocomplete",
+                      address_autocomplete_api_key_value: ENV["GEOPIFY_API_KEY"],
+                      address_autocomplete_target: "form",
+                    }  do %>
+        <div class="col-6" style= 'height: 38px;'>
           <%= text_field_tag :address,
-          params[:address],
-          class: "search_bar form-control",
-          placeholder: "Address",
-          data: { address_autocomplete_target: "address", action: 'keyup->address-autocomplete#update' }
+                              nil,
+                              class: "search_bar form-control",
+                              placeholder: "Address",
+                              autocomplete: :off,
+                              data: { address_autocomplete_target: "address", action: 'keyup->address-autocomplete#update' }
           %>
+          <div>
+            <%= render "playgrounds/autocomplete_window"%>
+          </div>
         </div>
-        <div class= col-3>
+        <div class="col-3">
           <%= text_field_tag :date,
-          params[:date],
-          class: "search_bar form-control",
-          placeholder: "Date"
+                              nil,
+                              class: "search_bar form-control",
+                              placeholder: "Date",
+                              data: { address_autocomplete_target: "date" }
           %>
         </div>
-        <div class= col-3>
-         <%= submit_tag "Search", class: "button-primary " %>
+        <div class="col-3">
+          <%= submit_tag "Search", class: "button-primary" %>
         </div>
-        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
