@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
   end
 
   def create_chatroom(session)
-    chatroom = Chatromm.new
+    chatroom = Chatroom.new
     chatroom.session = session
     chatroom.save
   end
