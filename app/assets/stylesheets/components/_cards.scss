@@ -3,6 +3,10 @@
   border: 0.5px solid #BDBDBD;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border-radius: 4px;
+  width: 90%;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
 
   & h2 {
     color: #102387;
@@ -13,9 +17,50 @@
   }
 }
 
-.card-playground {
 
+.card-session-incomming {
+  background: #FFFFFF;
+  border: 0.5px solid #FFA039;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 4px;
+  width: 90%;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+
+  & h2 {
+    color: #102387;
+  }
+
+  & p {
+    color: #5B6BC3;
+  }
 }
+
+.card-session-finished {
+  background: #FFFFFF;
+  border: 0.5px solid #BDBDBD;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 4px;
+  width: 90%;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+
+  & h2 {
+    color: #BDBDBD;
+  }
+
+  & h3 {
+    color: #FFA039;
+  }
+
+  & p {
+    color: #BDBDBD;
+  }
+}
+
+
 .playground-picture {
   border: 0.5px solid #BDBDBD;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);

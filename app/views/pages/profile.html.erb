@@ -1,6 +1,6 @@
-<div class="container my-3">
+<div class="container ">
   <div class="row justify-content-center">
-    <h2 class="mb-3">Profile</h2>
+    <h2 class="my-3">Profile</h2>
     <div class="d-flex flex-column align-items-center">
       <% if current_user.avatar.key %>
         <%= cl_image_tag current_user.avatar.key, class:"avatar-profile" %>
