@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     @session = Session.new(session_params)
     @session.playground = @playground
     if @session.save
+      create_chatroom(@session)
       redirect_to playground_path(@playground)
     else
       render :new, status: :unprocessable_entity
@@ -32,5 +33,11 @@ class SessionsController < ApplicationController
 
   def session_params
     params.require(:session).permit(:date, :minimum_players, :game_type, :comment, :duration)
+  end
+
+  def create_chatroom(session)
+    chatroom = Chatromm.new
+    chatroom.session = session
+    chatroom.save
   end
 end
