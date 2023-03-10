@@ -13,5 +13,5 @@ class Session < ApplicationRecord
 
   validates :date, :duration, :minimum_players, presence: true
   validates :game_type, inclusion: { in: @@GAME_TYPE }
-  validates :status, inclusion: { in: STATUS }
+  # validates :status, inclusion: { in: STATUS }
 end
