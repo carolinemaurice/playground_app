@@ -10,8 +10,11 @@ application.register("address-autocomplete", AddressAutocompleteController)
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
-import DisplayPlaygroundSessionController from "./display_playground_session_controller"
-application.register("display-playground-session", DisplayPlaygroundSessionController)
+import DisplayPlaygroundController from "./display_playground_controller"
+application.register("display-playground", DisplayPlaygroundController)
+
+import DisplayPlaygroundSessionsReviewsController from "./display_playground_sessions_reviews_controller"
+application.register("display-playground-sessions-reviews", DisplayPlaygroundSessionsReviewsController)
 
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
