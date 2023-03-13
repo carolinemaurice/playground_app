@@ -1,14 +1,19 @@
 <div class="container ">
   <h2 class="my-3">All my sessions</h2>
-    <h3 class="mt-3">Incomming sessions : ready to play ? </h3>
+    <h3 class="mt-3">Incoming sessions : ready to play ? </h3>
         <div class="row justify-content-center">
           <% @sessions_incomming.each do |session| %>
               <div class="card-session-incomming  my-3">
-                <h2> Session <%=session.date.time.strftime("%k:%M")%>h - <%= (session.date.time + session.duration * 60).strftime("%k:%M") %>h</h2>
+                <h2> Session <%=session.date.strftime("%kh%M")%> - <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>
                 <div class="d-flex justify-content-between">
                   <p> <%= session.game_type %></p>
                   <%# <%= session.user.avatar, class: "avatar-profile" %>
                   <%= link_to "Chat", session_chatroom_path(session, session.chatroom), class: "button-secondary" %>
+                  <% if session.creator == current_user  %>
+                    <%= link_to "Cancel this session", session_path(session), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                  <% else %>
+                    <%= link_to "Cancel this booking", booking_path(session.booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+                  <% end %>
                 </div>
           </div>
           <% end %>
