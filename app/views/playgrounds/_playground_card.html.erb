@@ -13,6 +13,12 @@
             class:"button-primary"%>
       </div>
     </div>
+
+    <div class="row">
+      <%= link_to "All sessions", "#", class:"col-5"%>
+      <%= link_to "All reviews", "#", class:"col-5 mute"%>
+    </div>
+
     <% playground.sessions.each do |session| %>
     <div class="card-session my-3">
       <div>

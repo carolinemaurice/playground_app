@@ -21,7 +21,7 @@
                 <div class="d-flex justify-content-between">
                   <p> <%= session.game_type %></p>
                   <%# <%= session.user.avatar, class: "avatar-profile" %>
-                  <p><%= link_to "Leave a review", "#", class: "button-link-review" %></p>
+                  <p><%= link_to "Leave a review", new_playground_review_path(session.playground), class: "button-link-review" %></p>
                 </div>
           </div>
           <% end %>

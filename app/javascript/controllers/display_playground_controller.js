@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="display-playground-session"
+// Connects to data-controller="display-playground"
 export default class extends Controller {
   static targets = ["playground", "markers"]
 

@@ -7,9 +7,10 @@ class SessionsController < ApplicationController
   def create
     @session = Session.new(session_params)
     @session.playground = @playground
+    @session.creator = current_user
     if @session.save
       create_chatroom(@session)
-      redirect_to playground_path(@playground)
+      redirect_to playgrounds_path
     else
       render :new, status: :unprocessable_entity
     end
