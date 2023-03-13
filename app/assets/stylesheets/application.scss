@@ -6,6 +6,7 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "flatpickr/dist/themes/light";
 
 // Your CSS partials
 @import "components/index";
@@ -41,6 +42,6 @@ a {
 }
 
 .mute {
-  color: $blueggod5;
+  color: $bluegood5;
   text-decoration: none;
 }

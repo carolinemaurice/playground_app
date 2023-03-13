@@ -1,6 +1,6 @@
 <div class="ps-0 pe-3 mb-4">
-  <div class="row d-flex justify-content-center">
-    <div class="col-12 my-3">
+  <div class="row">
+    <div class="col-12 my-3" data-controller='flatpickr'>
       <%= form_with url: playgrounds_path,
                     method: :get,
                     class: "d-flex gap-2",
@@ -8,6 +8,7 @@
                       controller: "address-autocomplete",
                       address_autocomplete_api_key_value: ENV["GEOPIFY_API_KEY"],
                       address_autocomplete_target: "form",
+                      flatpickr_target: 'address'
                     }  do %>
         <div class="col-6" style= 'height: 38px;'>
           <%= text_field_tag :address,
@@ -21,16 +22,22 @@
             <%= render "playgrounds/autocomplete_window"%>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <%= text_field_tag :date,
-                              nil,
+                              params['date'],
                               class: "search_bar form-control",
                               placeholder: "Date",
-                              data: { address_autocomplete_target: "date" }
+                              data: {
+                                address_autocomplete_target: "date",
+                                flatpickr_target: 'startDateInput',
+                                display_playground_target: 'date'
+                                }
+
           %>
+
         </div>
-        <div class="col-3">
-          <%= submit_tag "Search", class: "button-primary" %>
+        <div class="col-2">
+          <%= submit_tag "🔍", class: "button-search fa-solid fa-magnifying-glass py-2" %>
         </div>
       <% end %>
     </div>

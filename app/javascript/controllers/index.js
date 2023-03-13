@@ -16,6 +16,9 @@ application.register("display-playground", DisplayPlaygroundController)
 import DisplayPlaygroundSessionsReviewsController from "./display_playground_sessions_reviews_controller"
 application.register("display-playground-sessions-reviews", DisplayPlaygroundSessionsReviewsController)
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
