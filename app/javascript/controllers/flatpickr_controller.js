@@ -10,6 +10,12 @@ export default class extends Controller {
   // On controller's connection, call the flatpickr
   // function in order to build the calendars
   connect() {
-    flatpickr(this.startDateInputTarget)
+    console.log('oups I did it again')
+    flatpickr(this.startDateInputTarget, {
+      minDate: 'today',
+      defaultDate: 'today',
+      dateFormat: "d M",
+    })
+
   }
 }

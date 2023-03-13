@@ -1,5 +1,5 @@
 <div class="ps-0 pe-3 mb-4">
-  <div class="row d-flex justify-content-center">
+  <div class="row">
     <div class="col-12 my-3">
       <%= form_with url: playgrounds_path,
                     method: :get,
@@ -22,7 +22,7 @@
             <%= render "playgrounds/autocomplete_window"%>
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-5">
           <%= text_field_tag :date,
                               nil,
                               class: "search_bar form-control",
@@ -35,8 +35,8 @@
           %>
 
         </div>
-        <div class="col-3">
-          <%= submit_tag "Search", class: "button-primary" %>
+        <div class="col-1">
+          <%= submit_tag "🔍", class: "button-search fa-solid fa-magnifying-glass py-2" %>
         </div>
       <% end %>
     </div>
