@@ -25,3 +25,14 @@
   width: 200px;
   border-radius: 50%;
 }
+
+.avatar-stack {
+  display: flex;
+  flex-direction: row;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: -10px;
+  border: #bdbdbd 1px solid;
+  display: inline-block;
+}
