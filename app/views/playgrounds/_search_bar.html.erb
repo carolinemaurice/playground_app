@@ -6,6 +6,7 @@
                     class: "d-flex gap-2",
                     data: {
                       controller: "address-autocomplete",
+                      controller: "flatpickr",
                       address_autocomplete_api_key_value: ENV["GEOPIFY_API_KEY"],
                       address_autocomplete_target: "form",
                     }  do %>
@@ -26,7 +27,23 @@
                               nil,
                               class: "search_bar form-control",
                               placeholder: "Date",
-                              data: { address_autocomplete_target: "date" }
+                              data: {
+                                address_autocomplete_target: "date",
+                                flatpickr_target: 'startDateInput',
+                                }
+
+          %>
+
+          <%# <%= text_field_tag :date,
+                              nil,
+                              type: 'hidden',
+                              class: "search_bar form-control",
+                              placeholder: "Date",
+                              data: {
+                                address_autocomplete_target: "date",
+                                flatpickr_target: 'endDateInput',
+                                }
+
           %>
         </div>
         <div class="col-3">
