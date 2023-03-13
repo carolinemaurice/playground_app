@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <% sessions.each do |session| %>
+    <% sessions.sort_by(&:date).each do |session| %>
     <div class="card-session my-3">
       <div>
        <h2>Session :<%= session.date.time.strftime("%kh%M") %> - <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>

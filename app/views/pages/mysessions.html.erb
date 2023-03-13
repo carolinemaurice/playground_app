@@ -9,6 +9,7 @@
                   <p> <%= session.game_type %></p>
                   <%# <%= session.user.avatar, class: "avatar-profile" %>
                   <%= link_to "Chat", session_chatroom_path(session, session.chatroom), class: "button-secondary" %>
+                  <%= link_to "Cancel this session", session_path(session), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
                 </div>
           </div>
           <% end %>
