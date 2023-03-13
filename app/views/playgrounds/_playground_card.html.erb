@@ -15,11 +15,25 @@
 
   <div  data-controller="display-playground-sessions-reviews">
     <div class="row">
-      <%= link_to "All sessions", "#", class:"col-5"%>
-      <%= link_to "All reviews", "#", class:"col-5 mute"%>
+      <%= link_to "All sessions", "#", class:"col-5",
+          data: {
+                  display_playground_sessions_reviews_target: "sessionslink",
+                  action: "click->display-playground-sessions-reviews#displaySessions"
+                }
+      %>
+      <%= link_to "All reviews", "#", class:"col-5 mute",
+          data: {
+                  display_playground_sessions_reviews_target: "reviewslink",
+                  action: "click->display-playground-sessions-reviews#displayReviews"
+                }
+      %>
     </div>
 
-    <div data-display-playground-target="sessions-list"></div>
-    <div data-display-playground-target="reviews-list"></div>
+    <div data-display-playground-sessions-reviews-target="sessionslist">
+      <%= render "sessions/sessions_list", playground: playground %>
+    </div>
+    <div data-display-playground-sessions-reviews-target="reviewslist", class="d-none">
+      <%= render "reviews/reviews_list", playground: playground %>
+    </div>
   </div>
 </div>
