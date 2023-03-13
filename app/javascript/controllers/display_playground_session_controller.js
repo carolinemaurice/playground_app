@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
-  static targets = ["playground", "markers"]
+  static targets = ["playground", "markers", "date"]
 
   connect() {
   }
@@ -8,7 +8,7 @@ export default class extends Controller {
   displayCard(event) {
 
     this.playgroundTarget.innerHTML = ""
-    const url = `/playgrounds?playground_id=${event.params.id}`
+    const url = `/playgrounds?playground_id=${event.params.id}&date=${this.dateTarget.value}`
     fetch(url, {headers: {"Accept": "text/plain"}})
     .then(response => response.text())
     .then((data) => {
