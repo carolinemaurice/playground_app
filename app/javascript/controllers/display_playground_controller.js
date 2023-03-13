@@ -8,6 +8,7 @@ export default class extends Controller {
   }
 
   displayCard(event) {
+
     this.playgroundTarget.innerHTML = ""
     const url = `/playgrounds?playground_id=${event.params.id}`
     fetch(url, {headers: {"Accept": "text/plain"}})
@@ -15,6 +16,7 @@ export default class extends Controller {
     .then((data) => {
       this.playgroundTarget.innerHTML = data
       // TODO: SCROLL TO ELEMENT
+      scrollTo(0, 766)
     })
 
 
