@@ -13,6 +13,9 @@ application.register("chatroom-subscription", ChatroomSubscriptionController)
 import DisplayPlaygroundSessionController from "./display_playground_session_controller"
 application.register("display-playground-session", DisplayPlaygroundSessionController)
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
