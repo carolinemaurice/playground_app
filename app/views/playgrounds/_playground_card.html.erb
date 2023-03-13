@@ -13,7 +13,8 @@
             class:"button-primary" %>
       </div>
     </div>
-    <% playground.sessions.sort_by { |session| "#{session.date}T00:00:00Z".to_time }.each do |session| %>
+
+    <% sessions.each do |session| %>
     <div class="card-session my-3">
       <div>
        <h2>Session :<%= session.date.time.strftime("%kh%M") %> - <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>

@@ -4,16 +4,21 @@ class PlaygroundsController < ApplicationController
   def index
     if params[:playground_id].present?
       @playground = Playground.find(params[:playground_id])
+      @sessions = @playground.sessions_from(params['date'])
       respond_to do |format|
         format.html # Follow regular flow of Rails
-        format.text { render partial: "playgrounds/playground_card", locals: { playground: @playground }, formats: [:html] }
+        format.text do
+          render partial: "playgrounds/playground_card",
+                 locals: { playground: @playground, sessions: @sessions },
+                 formats: [:html]
+        end
       end
     else
-
       if params[:address].present?
-        @localisation = Geocoder.search(params[:address]).first.coordinates.reverse
+        @localisation = Geocoder.search(params[:address]).first.coordinates
 
-        @playgrounds = Playground.search_by_address_and_date(" #{params[:address]} #{params[:date]}")
+        @playgrounds = Playground.near(@localisation, 20, unit: 'km')
+        @localisation = @localisation.reverse
       else
         @localisation = [1.44, 43.6]
         @playgrounds = Playground.all

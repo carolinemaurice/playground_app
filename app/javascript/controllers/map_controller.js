@@ -16,6 +16,8 @@ export default class extends Controller {
       style: "mapbox://styles/laulau31/cleyaq47z000001ohyzzokbdb"
     })
 
+    console.log('i want it that way')
+
     if (this.markersValue.length) {
       this.#addMarkersToMap()
       this.#fitMapToMarkers()
@@ -32,7 +34,6 @@ export default class extends Controller {
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(customMarker)
       .setLngLat([marker.lng, marker.lat])
-      .setPopup(popup)
       .addTo(this.map)
     })
   }
