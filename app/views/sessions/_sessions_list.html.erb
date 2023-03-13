@@ -1,10 +1,10 @@
-  <% playground.sessions.each do |session| %>
+  <% playground.sessions.sort_by(&:date).each do |session| %>
     <div class="card-session my-3">
       <div>
-        <h2>Session :<%= session.date.time.strftime("%k:%M") %>h - <%= (session.date.time + session.duration * 60).strftime("%k:%M") %>h </h2>
+        <h2>Session :<%= session.date.time.strftime("%kh%M") %> - <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>
         <p><%= session.game_type %></p>
       </div>
-      <div class="row justify-content-between ">
+      <div class="row d-flex justify-content-between ">
         <div class="col-8">
           <% session.players.first(3).each do |player|%>
             <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>

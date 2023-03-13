@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
     @session.creator = current_user
     if @session.save
       create_chatroom(@session)
-      redirect_to playgrounds_path
+      redirect_to mysessions_path
+
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +24,7 @@ class SessionsController < ApplicationController
   def destroy
     @session = Session.find(params[:id])
     @session.destroy
-    redirect_to playground_path(@session.playground), status: :see_other
+    redirect_to mysessions_path, status: :see_other
   end
 
   private
