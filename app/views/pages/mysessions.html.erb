@@ -1,34 +1,55 @@
 <div class="container ">
   <h2 class="my-3">All my sessions</h2>
     <h3 class="mt-3">Incoming sessions : ready to play ? </h3>
-        <div class="row justify-content-center">
-          <% @sessions_incomming.each do |session| %>
-              <div class="card-session-incomming  my-3">
-                <h2> Session <%=session.date.strftime("%kh%M")%> - <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>
-                <div class="d-flex justify-content-between">
-                  <p> <%= session.game_type %></p>
-                  <%# <%= session.user.avatar, class: "avatar-profile" %>
-                  <%= link_to "Chat", session_chatroom_path(session, session.chatroom), class: "button-secondary" %>
-                  <% if session.creator == current_user  %>
-                    <%= link_to "Cancel this session", session_path(session), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-                  <% else %>
-                    <%= link_to "Cancel this booking", booking_path(current_user.bookings.find_by(session: session)), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
-                  <% end %>
-                </div>
-          </div>
-          <% end %>
-        <div>
+        <div class="row p-2 d-flex justify-content-center">
+          <% if @sessions_incomming.empty?%>
+           <p>You have no sessions yet.
+              You can either create one on your favorite playground or join an other already launched.
+              Have fun !</p>
+             <%= link_to "Let's play", root_path, class: "button-secondary" %>
+          <% else %>
+              <% @sessions_incomming.sort_by(&:date).each do |session| %>
+                <div class="card-session-incomming my-3">
+                    <div class="d-flex justify-content-between">
+                      <h2> Session <%=session.date.strftime("%kh%M")%>-<%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>
+                        <% if session.creator == current_user  %>
+                          <%= link_to "✖️", session_path(session), class: "button-link", data: {turbo_method: :delete, turbo_confirm: "Are you sure? You are about to cancel the session you've just launched."} %>
+                        <% else %>
+                          <%= link_to "Quit", booking_path(current_user.bookings.find_by(session: session)), class: "button-link-quit-session", data: {turbo_method: :delete, turbo_confirm:  "You are about to sign out of this session. Are you sure you don't want to play ?"}  %>
+                        <% end %>
+                    </div>
+                    <h3> <%= session.playground.name %> </h3>
+                    <p> <%= session.date.strftime("%d %B %Y") %> |  <%= session.playground.address %>    </p>
+                    <p><u>Game type:</u> <%= session.game_type %></p>
+
+                    <div class="d-flex justify-content-between">
+                      <div id="d-flex justify-content-left">
+                          <% session.players.first(3).each do |player|%>
+                            <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
+                              <% if session.players.count > 3  %>
+                                <span>+<%=session.players.count - 3%></span>
+                              <% end %>
+                          <% end %>
+                      </div>
+                      <%= link_to "Chat", session_chatroom_path(session, session.chatroom), class: "button-secondary mb-1" %>
+                    </div>
+                  </div>
+              <% end %>
+            <%end%>
+        </div>
     <h3 class="mt-3">History of past sessions</h3>
       <div class="row justify-content-center">
-          <% @sessions_finished.each do |session| %>
-              <div class="card-session-finished my-3">
-                <h2> Session <%=session.date.time.strftime("%k:%M")%>h - <%= (session.date.time + session.duration * 60).strftime("%k:%M") %>h</h2>
-                <div class="d-flex justify-content-between">
-                  <p> <%= session.game_type %></p>
-                  <%# <%= session.user.avatar, class: "avatar-profile" %>
-                  <p><%= link_to "Leave a review", new_playground_review_path(session.playground), class: "button-link-review" %></p>
-                </div>
+        <% @sessions_finished.sort_by(&:date).each do |session| %>
+          <div class="card-session-finished my-3">
+            <h2> Session <%=session.date.time.strftime("%kh%M")%>- <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>
+              <h3> <%= session.playground.name %> </h3>
+             <p> <%= session.date.strftime("%d %B %Y") %>  |  <%= session.playground.address %> </p>
+             <p><u>Game type:</u> <%= session.game_type %></p>
+            <div class="d-flex justify-content-end">
+
+              <p><%= link_to "Leave a review", new_playground_review_path(session.playground), class: "button-link-review" %></p>
+            </div>
           </div>
-          <% end %>
-        <div>
+        <% end %>
+      </div>
 </div>
