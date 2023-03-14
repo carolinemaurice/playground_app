@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root to: "pages#home"
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server'
+  get '/422', to: 'errors#unprocessable'
   get "/profile", to: "pages#profile", as: :profile
   get "/mysessions", to: "pages#mysessions", as: :mysessions
   resources :playgrounds, only: :index do
