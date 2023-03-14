@@ -1,0 +1,14 @@
+<div class="container ">
+  <div class="row justify-content-center">
+    <h2>Leave a comment about <%= @playground.name %></h2>
+    <%= simple_form_for [@playground, @review],
+        html: { class: "d-flex" } do |f|
+      %>
+        <%= f.input :comment,
+          label: false,
+          placeholder: "Comment..."
+        %>
+        <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+      <% end %>
+  </div>
+</div>

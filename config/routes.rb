@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :sessions, only: %i[show new create] do
       resources :bookings, only: :create
     end
+    resources :reviews, only: %i[new create]
   end
   resources :sessions, only: :destroy do
     resources :chatrooms, only: :show do

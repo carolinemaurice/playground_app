@@ -1,40 +1,39 @@
-<div>
-  <div class="card-playground">
-    <div>
-     <%= render "playgrounds/carroussel", playground: playground %>
-     <h2 class="mt-3"><%= playground.name%></h2>
+<div class="card-playground">
+  <div>
+    <%= render "playgrounds/carroussel", playground: playground %>
+    <h2 class="mt-3"><%= playground.name%></h2>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <p> <%= playground.description %></p>
     </div>
+    <div class="col-6">
+      <%= link_to "Create a session",new_playground_session_path(playground),
+          class:"button-primary" %>
+    </div>
+  </div>
+
+  <div  data-controller="display-playground-sessions-reviews">
     <div class="row">
-      <div class="col-6">
-        <p> <%= playground.description %></p>
-      </div>
-      <div class="col-6">
-        <%= link_to "Create a session",new_playground_session_path(playground),
-            class:"button-primary" %>
-      </div>
+      <%= link_to "All sessions", "#", class:"col-5",
+          data: {
+                  display_playground_sessions_reviews_target: "sessionslink",
+                  action: "click->display-playground-sessions-reviews#displaySessions"
+                }
+      %>
+      <%= link_to "All reviews", "#", class:"col-5 mute",
+          data: {
+                  display_playground_sessions_reviews_target: "reviewslink",
+                  action: "click->display-playground-sessions-reviews#displayReviews"
+                }
+      %>
     </div>
 
-    <% sessions.sort_by(&:date).each do |session| %>
-    <div class="card-session my-3">
-      <div>
-       <h2>Session :<%= session.date.time.strftime("%kh%M") %> - <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>
-       <p><%= session.game_type %></p>
-      </div>
-      <div class="row d-flex justify-content-between ">
-          <div class="col-8">
-            <% session.players.first(3).each do |player|%>
-            <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
-            <% end %>
-            <% if session.players.count > 3  %>
-              <span>+<%=session.players.count - 3%></span>
-            <% end %>
-          </div>
-          <div class="col-4">
-            <%= link_to "Join", playground_session_bookings_path(session.playground, session),
-                       data: {turbo_method: :post}, class: "button-primary" %>
-          </div>
-      </div>
-      <div>
-      </div>
+    <div data-display-playground-sessions-reviews-target="sessionslist">
+      <%= render "sessions/sessions_list", playground: playground, sessions: sessions %>
     </div>
-        <% end %>
+    <div data-display-playground-sessions-reviews-target="reviewslist", class="d-none">
+      <%= render "reviews/reviews_list", playground: playground %>
+    </div>
+  </div>
+</div>
