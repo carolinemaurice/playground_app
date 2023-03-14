@@ -15,9 +15,7 @@ class Session < ApplicationRecord
   validates :game_type, inclusion: { in: @@GAME_TYPE }
   # validates :status, inclusion: { in: STATUS }
 
-  scope :startingsoon, -> { where(status: "Starting soon") }
-  scope :running, -> { where(status: "Running") }
-  scope :historic, -> { where('date < ?', Date.today) }
-  scope :incoming, -> { where(status: "Starting soon" || "Running").and(where('date > ?', Date.today)) }
 
+  scope :historic, -> { where('date < ?', Date.today) }
+  scope :incoming, -> { where('date >= ?', Date.today) }
 end
