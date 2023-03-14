@@ -40,13 +40,12 @@
       <div class="row justify-content-center">
         <% @sessions_finished.sort_by(&:date).each do |session| %>
           <div class="card-session-finished my-3">
-            <h2> Session <%=session.date.time.strftime("%k:%M")%>h - <%= (session.date.time + session.duration * 60).strftime("%k:%M") %>h</h2>
+            <h2> Session <%=session.date.time.strftime("%kh%M")%>- <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>
             <div class="d-flex justify-content-between">
               <p> <%= session.date.strftime("%d %B %Y") %> |  <%= session.game_type %></p>
               <%# <%= session.user.avatar, class: "avatar-profile" %>
-              <p><%= link_to "Leave a review", "#", class: "button-link-review" %></p>
+              <p><%= link_to "Leave a review", new_playground_review_path(session.playground), class: "button-link-review" %></p>
             </div>
-          </div>
         <% end %>
       <div>
 </div>

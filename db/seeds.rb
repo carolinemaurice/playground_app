@@ -129,13 +129,16 @@ comments = [
   "Au plaisir de jouer avec vous."
 ]
 
-100.times do
+250.times do
   creator = User.all.sample
   playground = Playground.all.sample
   date_session = [
-    Faker::Time.between_dates(from: Date.today - 12, to: Date.today, period: :day),
-    Faker::Time.between_dates(from: Date.today, to: Date.today + 21, period: :day),
-    Faker::Time.between_dates(from: Date.today, to: Date.today + 21, period: :evening)
+    Faker::Time.between_dates(from: Date.today - 8, to: Date.today, period: :day).beginning_of_hour,
+    Faker::Time.between_dates(from: Date.today - 8, to: Date.today, period: :day).beginning_of_hour + 30.minute,
+    Faker::Time.between_dates(from: Date.today, to: Date.today + 15, period: :day).beginning_of_hour,
+    Faker::Time.between_dates(from: Date.today, to: Date.today + 15, period: :day).beginning_of_hour,
+    Faker::Time.between_dates(from: Date.today, to: Date.today + 15, period: :day).beginning_of_hour + 30.minute,
+    Faker::Time.between_dates(from: Date.today, to: Date.today + 15, period: :evening).beginning_of_hour + 30.minute
   ].sample
   gametype = GAME_TYPE.sample
 
