@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     @session = Session.find(params[:id])
-    @session.destroy
+    @session.destroy if @session.creator == current_user
     redirect_to mysessions_path, status: :see_other
   end
 
