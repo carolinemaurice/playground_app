@@ -15,7 +15,6 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     # a booking cannot be destroyed 30 minutes before the start of the session
     time_until_start_session = retrieve_duration_between_session_and_now(@booking.session)
-
     case time_until_start_session
     when (30..)
       @booking.destroy
@@ -36,8 +35,8 @@ class BookingsController < ApplicationController
     date = session.date.strftime("%s").to_i
     # obtain date of now in seconds from epoch
     date_now = DateTime.now.strftime("%s").to_i
-    elapsed_time = date_now - date
+    elapsed_time = date - date_now
     # Convert elapsed_time in minutes
-    elapsed_time / 60
+    (elapsed_time / 60) - 60
   end
 end

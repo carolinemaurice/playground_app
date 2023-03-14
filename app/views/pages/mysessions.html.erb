@@ -12,7 +12,7 @@
                   <% if session.creator == current_user  %>
                     <%= link_to "Cancel this session", session_path(session), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
                   <% else %>
-                    <%= link_to "Cancel this booking", booking_path(session.booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+                    <%= link_to "Cancel this booking", booking_path(current_user.bookings.find_by(session: session)), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
                   <% end %>
                 </div>
           </div>
