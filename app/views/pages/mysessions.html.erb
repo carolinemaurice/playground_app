@@ -8,12 +8,19 @@
                 <h2> Session <%=session.date.strftime("%kh%M")%> - <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>
                 <div class="d-flex justify-content-between">
                   <p><%= session.date.strftime("%d %B %Y") %> |  <%= session.game_type %></p>
-                  <%# <%= session.user.avatar, class: "avatar-profile" %>
+                   <div class="col-8">
+                    <% session.players.first(3).each do |player|%>
+                    <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
+                    <% end %>
+                    <% if session.players.count > 3  %>
+                      <span>+<%=session.players.count - 3%></span>
+                    <% end %>
+                  </div>
                   <%= link_to "Chat", session_chatroom_path(session, session.chatroom), class: "button-secondary mb-1" %>
                   <% if session.creator == current_user  %>
-                    <%= link_to "Cancel this session", session_path(session), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                    <%= link_to "✖️", session_path(session), data: {turbo_method: :delete, turbo_confirm: "Are you sure? You are about to cancel the session you've just launched. "} %>
                   <% else %>
-                    <%= link_to "Cancel this booking", booking_path(session.booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+                    <%= link_to "❌", booking_path(session.booking), data: {turbo_method: :delete, turbo_confirm:  "You are about to sign out of this session. Are you sure you don't want to play ?"}  %>
                   <% end %>
                 </div>
           </div>
@@ -25,7 +32,7 @@
               <div class="card-session-finished my-3">
                 <h2> Session <%=session.date.time.strftime("%k:%M")%>h - <%= (session.date.time + session.duration * 60).strftime("%k:%M") %>h</h2>
                 <div class="d-flex justify-content-between">
-                  <p> <%= session.game_type %></p>
+                  <p> <%= session.date.strftime("%d %B %Y") %> |  <%= session.game_type %></p>
                   <%# <%= session.user.avatar, class: "avatar-profile" %>
                   <p><%= link_to "Leave a review", "#", class: "button-link-review" %></p>
                 </div>
