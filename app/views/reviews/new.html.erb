@@ -1,6 +1,8 @@
 <div class="container ">
-  <div class="row justify-content-center">
-    <h2>Leave a comment about <%= @playground.name %></h2>
+  <div class="row my-3 justify-content-center">
+    <h2>Leave your review </h2>
+    <h3 class="my-3">What do you have to say on <%= @playground.name %> ? </h3>
+   <div class= "good-place">
     <%= simple_form_for [@playground, @review],
         html: { class: "d-flex" } do |f|
       %>
@@ -8,7 +10,8 @@
           label: false,
           placeholder: "Comment..."
         %>
-        <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+        <%= f.submit "Send", class: "button-primary mb-3" %>
       <% end %>
+    </div>
   </div>
 </div>
