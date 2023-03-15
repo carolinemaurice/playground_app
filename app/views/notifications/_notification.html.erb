@@ -1,4 +1,21 @@
-<small>
-  <i><%= notification.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-</small>
-<p><%= notification.content %></p>
+<div>
+  <% if notification.status == "Unread" %>
+    <div class="card-notification-unread">
+      <small class="d-flex justify-content-between">
+        <i><%= notification.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        <% url = "/notifications_users/#{notification.notifications_user.id}/notifications/#{notification.id}/mark_as_read" %>
+        <%= link_to "Mark as read", url, data: {turbo_method: :post}, class: "button-link" %>
+      </small>
+      <p><%= notification.content %></p>
+    </div>
+  <% else %>
+    <div class="card-notification-read">
+      <small class="d-flex justify-content-between">
+        <i><%= notification.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        <% url = "/notifications_users/#{notification.notifications_user.id}/notifications/#{notification.id}/mark_as_unread" %>
+        <%= link_to "Mark as unread", url, data: {turbo_method: :post}, class: "button-link" %>
+      </small>
+      <p><%= notification.content %></p>
+    </div>
+  <% end %>
+</div>

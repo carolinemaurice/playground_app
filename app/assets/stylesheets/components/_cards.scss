@@ -42,7 +42,7 @@
   border: 0.5px solid #BDBDBD;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border-radius: 4px;
-  width: 95%;
+  width: 100%;
   padding-top: 5px;
   padding-left: 10px;
   padding-bottom: 5px;
@@ -69,4 +69,40 @@
   width: 95%;
   border-radius: 4px;
   margin-top: 8px;
+}
+
+.card-notification-unread {
+  background: #FFFFFF;
+  border: 0.5px solid #FFA039;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 4px;
+  width: 100%;
+  margin: 5px 0px;
+  padding: 5px 10px;
+
+  & i {
+    color: #102387;
+  }
+
+  & p {
+    color: #5B6BC3;
+  }
+}
+
+.card-notification-read {
+  background: #FFFFFF;
+  border: 0.5px solid #BDBDBD;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 4px;
+  width: 100%;
+  margin: 5px 0px;
+  padding: 5px 10px;
+
+  & i {
+    color: #BDBDBD;
+  }
+
+  & p {
+    color: #BDBDBD;
+  }
 }

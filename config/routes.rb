@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   }
   resources :notifications_users, only: :show do
     resources :notifications, only: :create
+    post "/notifications/:id/mark_as_read", to: "notifications#mark_as_read"
+    post "/notifications/:id/mark_as_unread", to: "notifications#mark_as_unread"
   end
 end

@@ -8,6 +8,22 @@ class NotificationsController < ApplicationController
     @notification.save
   end
 
+  def mark_as_read
+    @notification = Notification.find(params[:id])
+    @notification.status = "Read"
+    if @notification.save
+      redirect_to notifications_user_path(current_user.notifications_user)
+    end
+  end
+
+  def mark_as_unread
+    @notification = Notification.find(params[:id])
+    @notification.status = "Unread"
+    if @notification.save
+      redirect_to notifications_user_path(current_user.notifications_user)
+    end
+  end
+
   private
 
   def notification_params
