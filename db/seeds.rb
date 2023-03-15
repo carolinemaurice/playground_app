@@ -7,10 +7,6 @@ require "faker"
 
 Faker::Config.locale = 'fr'
 
-puts "Database cleaning..."
-User.destroy_all
-Playground.destroy_all
-
 puts "Create users..."
 
 30.times do
