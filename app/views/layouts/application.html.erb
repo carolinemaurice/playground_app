@@ -12,10 +12,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="background-color">
+  <body class="background-color" data-controller="display-avatar-notice">
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
-
   </body>
 </html>

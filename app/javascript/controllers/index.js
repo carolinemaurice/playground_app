@@ -25,8 +25,8 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import MarkAsReadUnreadController from "./mark_as_read_unread_controller"
-application.register("mark-as-read-unread", MarkAsReadUnreadController)
+import DisplayAvatarNoticeController from "./display_avatar_notice_controller"
+application.register("display-avatar-notice", DisplayAvatarNoticeController)
 
 import NotificationsUserSubscriptionController from "./notifications_user_subscription_controller"
 application.register("notifications-user-subscription", NotificationsUserSubscriptionController)
