@@ -17,11 +17,10 @@
   color:#FFA039 ;
   border: 1px solid #FFA039;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-  justify-content: center;
-  align-items : center;
   border-radius: 4px;
   text-decoration: none;
-  padding: 1%
+  padding: 1%;
+  width: fit-content;
 }
 
 
@@ -30,6 +29,7 @@
   text-decoration: none;
 }
 
+
 .button-link:hover {
   color: $orangegood3;
   text-decoration: none;
@@ -37,6 +37,11 @@
 
 .button-link-review {
   color: #FFA039;
+}
+
+.button-link-quit-session {
+  color: $littlegrey;
+
 }
 
 

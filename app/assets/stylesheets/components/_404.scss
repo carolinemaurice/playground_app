@@ -1,0 +1,65 @@
+.error {
+  &body {
+    background-color: $bg;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 40%;
+  }
+
+  &main {
+    align-items: right;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+
+  }
+
+  & h1 {
+    color: $orangegood3;
+    font-size: 12.5rem;
+    margin: auto;
+    text-shadow: .05em .05em 0 rgba(0,0,0,.25);
+    white-space: nowrap;
+    text-align: center;
+
+    @media(max-width: 30rem) {
+      font-size: 8.5rem;
+    }
+
+    & > span {
+      animation: spooky 2s alternate infinite linear;
+      color: $ghost;
+      display: inline-block;
+    }
+  }
+
+  & h2 {
+    color: $heading;
+    margin-bottom: .40em;
+  }
+
+  & p {
+    color:$orangegood4;
+    margin-top: 0;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  @keyframes spooky {
+    from {
+      transform: translatey(.15em) scaley(.95);
+    }
+
+    to {
+      transform: translatey(-.15em);
+    }
+  }
+}
+
+.full-page {
+  height: 100vh;
+  background-color: $bluegood2;
+  padding-top: 40%;
+  justify-content: center;
+}
