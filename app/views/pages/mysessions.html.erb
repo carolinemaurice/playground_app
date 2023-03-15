@@ -20,16 +20,20 @@
                     </div>
                     <h3> <%= session.playground.name %> </h3>
                     <p> <%= session.date.strftime("%d %B %Y") %> |  <%= session.playground.address %>    </p>
-                    <p><u>Game type:</u> <%= session.game_type %></p>
+                    <p>By <u><strong><%= session.creator.username %></u></strong>   |  <u>Game type:</u> <%= session.game_type %></p>
 
                     <div class="d-flex justify-content-between">
                       <div id="d-flex justify-content-left">
+                      <% if session.players.empty? %>
+                      <p class="mute"><em>Still waiting for players to join!</em></p>
+                      <% else %>
                           <% session.players.first(3).each do |player|%>
                             <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
                               <% if session.players.count > 3  %>
                                 <span>+<%=session.players.count - 3%></span>
                               <% end %>
                           <% end %>
+                      <% end %>
                       </div>
                       <%= link_to "Chat", session_chatroom_path(session, session.chatroom), class: "button-secondary mb-1" %>
                     </div>
@@ -44,7 +48,7 @@
             <h2> Session <%=session.date.time.strftime("%kh%M")%>- <%= (session.date.time + session.duration * 60).strftime("%kh%M") %></h2>
               <h3> <%= session.playground.name %> </h3>
              <p> <%= session.date.strftime("%d %B %Y") %>  |  <%= session.playground.address %> </p>
-             <p><u>Game type:</u> <%= session.game_type %></p>
+             <p>By <u><strong><%= session.creator.username %></u></strong>   |  <u>Game type:</u> <%= session.game_type %></p>
             <div class="d-flex justify-content-end">
 
               <p><%= link_to "Leave a review", new_playground_review_path(session.playground), class: "button-link-review" %></p>

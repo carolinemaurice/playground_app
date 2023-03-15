@@ -1,3 +1,10 @@
-<% playground.reviews.each do |review| %>
-  <%= review.comment %>
+<% if @playground.reviews.empty? %>
+  <p class="mute"><em>No review on this playground yet! Feel free to add one at the end of your session.</em></p>
+<% else %>
+  <% playground.reviews.each do |review| %>
+<div class="my-3 card-reviews">
+  <p> From <strong><u><%= review.user.username %></u></strong></p>
+  <p><%= review.comment %></p>
+</div>
+  <% end %>
 <% end %>
