@@ -11,3 +11,10 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-window {
+  & p {
+    color: #FFA039;
+    font-weight: 400;
+  }
+}
