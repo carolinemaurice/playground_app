@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_145413) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_091502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_145413) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "content"
+    t.bigint "notifications_user_id", null: false
+    t.bigint "session_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", default: "Unread"
+    t.index ["notifications_user_id"], name: "index_notifications_on_notifications_user_id"
+    t.index ["session_id"], name: "index_notifications_on_session_id"
+  end
+
+  create_table "notifications_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_users_on_user_id"
+  end
+
   create_table "playgrounds", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -136,6 +154,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_145413) do
   add_foreign_key "chatrooms", "sessions"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "notifications_users"
+  add_foreign_key "notifications", "sessions"
+  add_foreign_key "notifications_users", "users"
   add_foreign_key "reviews", "playgrounds"
   add_foreign_key "reviews", "users"
   add_foreign_key "sessions", "playgrounds"

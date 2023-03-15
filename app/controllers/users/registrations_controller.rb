@@ -10,9 +10,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    notifications_user = NotificationsUser.new
+    notifications_user.user = current_user
+    notifications_user.save
+  end
 
   # GET /resource/edit
   # def edit

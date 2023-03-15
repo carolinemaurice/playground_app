@@ -20,9 +20,18 @@
           <% end %>
         <% end %>
         </div>
-        <div class="col-4 mb-2">
+        <div class="col-4 mb-2"
+             data-controller="send-joining-notification"
+             data-send-joining-notification-session-id-value="<%= session.id %>"
+             data-send-joining-notification-playground-id-value="<%= session.playground.id %>"
+        >
           <%= link_to "Join", playground_session_bookings_path(session.playground, session),
-                    data: {turbo_method: :post}, class: "button-secondary"
+                    data: {
+                            turbo_method: :post,
+                            send_joining_notification_target: "joinlink",
+                            action: "click->send-joining-notification#send_notification"
+                          },
+                    class: "button-secondary"
           %>
         </div>
       </div>
