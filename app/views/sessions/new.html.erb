@@ -1,5 +1,5 @@
 <div class="container">
-<h1>Create a session</h1>
+<h1 class="my-3">Create a session</h1>
 <%= simple_form_for [@playground, @session] do |f| %>
   <%= f.input :game_type, collection: Session.class_variable_get(:@@GAME_TYPE) %>
   <%= f.input :date %>
