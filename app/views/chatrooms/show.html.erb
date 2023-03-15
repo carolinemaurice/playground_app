@@ -1,12 +1,16 @@
 <div class="container"
      data-controller="chatroom-subscription"
      data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h2>Chatroom</h2>
+  <h2 class="my-3">Chatroom</h2>
+  <h3><%= @chatroom.session.date.strftime("%kh%M")%>-<%= (@chatroom.session.date.time + @chatroom.session.duration * 60).strftime("%kh%M") %> | <%= @chatroom.session.playground.name %> </h3>
+  <p>A doubt or a question ? You can chat with all the other players of this session. Feel free to send the first message!</p>
 
-  <div class="card-session" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-    <% end %>
+  <div class="card-session">
+    <div  data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
     <div class="good-place">
       <%= simple_form_for [@chatroom.session, @chatroom, @message],
         html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },
@@ -17,7 +21,7 @@
           label: false,
           placeholder: "Message...",
           wrapper_html: {class: "flex-grow-1"},
-          class: "w-100"
+          class: "mt-3"
         %>
         <%= f.submit "Send", class: " button-primary mb-3" %>
       <% end %>
