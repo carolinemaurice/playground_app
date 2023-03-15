@@ -1,9 +1,9 @@
 .card-session {
   background: #FFFFFF;
-  border: 0.5px solid #BDBDBD;
+  border: 0.5px solid #FFA039;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border-radius: 4px;
-  width: 90%;
+  width: 100%;
   padding-top: 5px;
   padding-left: 10px;
   padding-bottom: 5px;
@@ -60,13 +60,32 @@
   }
 }
 
+.card-reviews {
+
+ border-radius: 4px;
+ border: 0.5px solid #BDBDBD;
+ padding-top: 5px;
+ padding-left: 5px;
+ background-color: $light-cream;
+ box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+
+
+  & h3 {
+    color: #102387;
+  }
+
+  & p {
+    color: #5B6BC3;
+  }
+
+}
 
 .playground-picture {
   border: 0.5px solid #BDBDBD;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border-radius: 4px;
   height: 250px;
-  width: 95%;
+  width: 100%;
   border-radius: 4px;
   margin-top: 8px;
 }
