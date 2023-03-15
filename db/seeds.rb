@@ -28,6 +28,7 @@ puts "Create users..."
   file = URI.open(Faker::Avatar.image)
   user.avatar.attach(io: file, filename: "#{firstname}.png", content_type: "photo.png")
   puts "#{firstname} #{lastname} created"
+  NotificationsUser.create!(user_id: user.id)
 end
 
 puts "Create playgrounds..."

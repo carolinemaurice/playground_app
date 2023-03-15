@@ -1,0 +1,12 @@
+<div class="container"
+     data-controller="notifications-user-subscription"
+     data-notifications-user-subscription-notifications-user-id-value="<%= @notifications_user.id %>"
+>
+  <h2>Notifications</h2>
+
+  <div data-notifications-user-subscription-target="notifications">
+    <% @notifications_user.notifications.reverse.each do |notification| %>
+      <%= render "notifications/notification", notification: notification %>
+    <% end %>
+  </div>
+</div>

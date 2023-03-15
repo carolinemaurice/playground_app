@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :sessions, only: %i[show new create] do
       resources :bookings, only: :create
     end
+    get "/sessions/:id/notice_new_player", to: "sessions#notice_new_player"
     resources :reviews, only: %i[new create]
   end
   resources :sessions, only: :destroy do
@@ -18,4 +19,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  resources :notifications_users, only: :show do
+    resources :notifications, only: :create
+  end
 end

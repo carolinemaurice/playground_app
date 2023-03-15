@@ -24,3 +24,9 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import NotificationsUserSubscriptionController from "./notifications_user_subscription_controller"
+application.register("notifications-user-subscription", NotificationsUserSubscriptionController)
+
+import SendJoiningNotificationController from "./send_joining_notification_controller"
+application.register("send-joining-notification", SendJoiningNotificationController)

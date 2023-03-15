@@ -10,6 +10,7 @@ class Session < ApplicationRecord
 
   belongs_to :playground
   has_one :chatroom, dependent: :destroy
+  has_many :notifications
 
   validates :date, :duration, :minimum_players, presence: true
   validates :game_type, inclusion: { in: @@GAME_TYPE }

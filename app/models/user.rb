@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_one :notifications_user, dependent: :destroy
   has_one_attached :avatar
 
   validates :first_name, :last_name, :username, presence: true
