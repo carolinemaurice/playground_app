@@ -12,6 +12,7 @@
         <% if session.players.empty? %>
         <p class="mute"><em>Be the first to join this session !</em></p>
         <% else %>
+        <div class="d-flex">
           <% session.players.first(3).each do |player|%>
             <% if player.avatar.key %>
               <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
@@ -19,9 +20,10 @@
               <%= image_tag "default_avatar.jpg", class:"avatar-stack"%>
             <% end %>
           <% end %>
-          <% if session.players.count > 3  %>
-            <span>+<%=session.players.count - 3%></span>
-          <% end %>
+            <% if session.players.count > 3  %>
+              <p class="m-2"> +<%=session.players.count - 3%></p>
+            <% end %>
+        </div>
         <% end %>
         </div>
         <div class="col-4 mb-2"

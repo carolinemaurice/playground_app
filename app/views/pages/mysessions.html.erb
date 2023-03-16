@@ -27,16 +27,18 @@
                       <% if session.players.empty? %>
                         <p class="mute"><em>Still waiting for players to join!</em></p>
                       <% else %>
-                        <% session.players.first(3).each do |player|%>
-                          <% if player.avatar.key %>
-                            <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
-                          <% else %>
-                            <%= image_tag "default_avatar.jpg", class:"avatar-stack"%>
+                        <div class="d-flex">
+                          <% session.players.first(3).each do |player|%>
+                            <% if player.avatar.key %>
+                              <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
+                            <% else %>
+                              <%= image_tag "default_avatar.jpg", class:"avatar-stack"%>
+                            <% end %>
                           <% end %>
-                        <% end %>
-                        <% if session.players.count > 3  %>
-                          <p class="avatar-bordered">+<%=session.players.count - 3%></p>
-                        <% end %>
+                            <% if session.players.count > 3  %>
+                              <p class="m-2"> +<%=session.players.count - 3%></p>
+                            <% end %>
+                        </div>
                       <% end %>
                       </div>
                       <%= link_to "Chat", session_chatroom_path(session, session.chatroom), class: "button-secondary mb-1" %>
