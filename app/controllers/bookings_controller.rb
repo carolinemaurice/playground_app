@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @booking.session = @session
     @booking.user = current_user
     if @booking.session.players.include?(@booking.user)
-      redirect_to playgrounds_path, notice: "You have already joined this sessions!"
+      redirect_to playgrounds_path, notice: "You have already joined this session!"
     else
       if @booking.save
         redirect_to mysessions_path, notice: "You joined the session!"

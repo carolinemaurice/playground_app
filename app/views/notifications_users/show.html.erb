@@ -3,10 +3,14 @@
      data-notifications-user-subscription-notifications-user-id-value="<%= @notifications_user.id %>"
 >
   <h2 class="my-3">Notifications</h2>
-
   <div data-notifications-user-subscription-target="notifications">
-    <% @notifications_user.notifications.reverse.each do |notification| %>
-      <%= render "notifications/notification", notification: notification %>
+    <% if @notifications_user.notifications.empty? %>
+      <p class="mute"><em>You have any notification yet.</em></p>
+    <% else %>
+    <%= puts "coucou" %>
+      <% @notifications_user.notifications.reverse.each do |notification| %>
+        <%= render "notifications/notification", notification: notification %>
+      <% end %>
     <% end %>
   </div>
 </div>

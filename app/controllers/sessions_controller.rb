@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     notifications_user = @session.creator.notifications_user
     notification.notifications_user = notifications_user
     notification.session = @session
-    notification.content = "#{current_user.username} has joined your session planned the #{@session.date}."
+    notification.content = "#{current_user.username} has joined your session planned the #{@session.date.strftime("%e/%m at %l:%M %p")}."
     if notification.save
       NotificationsUserChannel.broadcast_to(
         notifications_user,
