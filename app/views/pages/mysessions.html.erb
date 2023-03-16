@@ -29,9 +29,9 @@
                       <% else %>
                         <% session.players.first(3).each do |player|%>
                           <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
-                            <% if session.players.count > 3  %>
-                              <span>+<%=session.players.count - 3%></span>
-                            <% end %>
+                        <% end %>
+                        <% if session.players.count > 3  %>
+                          <span>+<%=session.players.count - 3%></span>
                         <% end %>
                       <% end %>
                       </div>
