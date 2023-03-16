@@ -4,10 +4,14 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @booking.session = @session
     @booking.user = current_user
-    if @booking.save
-      redirect_to mysessions_path, notice: "You joined the session!"
+    if @booking.session.players.include?(@booking.user)
+      flash.now[:notice] = "You have already joined this sessions!"
     else
-      redirect_to new_user_session_path
+      if @booking.save
+        redirect_to mysessions_path, notice: "You joined the session!"
+      else
+        redirect_to new_user_session_path
+      end
     end
   end
 

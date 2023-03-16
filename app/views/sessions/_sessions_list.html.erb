@@ -13,7 +13,11 @@
         <p class="mute"><em>Be the first to join this session !</em></p>
         <% else %>
           <% session.players.first(3).each do |player|%>
-            <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
+            <% if current_user.avatar.key %>
+              <%= cl_image_tag player.avatar.key, class:"avatar-stack"%>
+            <% else %>
+              <%= image_tag "default_avatar.jpg", class:"avatar-stack"%>
+            <% end %>
           <% end %>
           <% if session.players.count > 3  %>
             <span>+<%=session.players.count - 3%></span>
